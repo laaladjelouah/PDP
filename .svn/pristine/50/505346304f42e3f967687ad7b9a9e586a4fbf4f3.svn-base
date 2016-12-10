@@ -1,0 +1,80 @@
+This file is part of the automatic bike rental system.
+
+Copyright (C) 2015/2016 OUAID steward,LASSOUANI sofiane
+
+This website is developed as part of a programming project "PDP" 
+in Bordeaux University , whose client is Mathieu Raffinot.
+
+for more information visit : http://dept-info.labri.u-bordeaux.fr/~narbel/PdP/Subjects15-16/pdp_raffinot3.html
+
+                            automatic bike rental system
+                            ============================
+
+
+SUPPORTED OPERATING SYSTEMS :
+-----------------------------
+
+The automatic bike rental system works on :
+
+ - Windows 8/10
+ 
+
+REQUIREMENTS :
+-------------
+
+ - WampServer
+ - Postgresql
+ - Composer
+ - tortoisesvn
+
+BUILDING AND INSTALLING  :
+_________________________
+If you can't install wampserver and have an error like "Impossible to start the software because there is no VCRUNTIME140.dll on this computer."
+Please read this post: 
+http://forum.wampserver.com/read.php?1,137154
+
+
+ - Install WampServer
+Download and install WampServer via this URL :  http://www.wampserver.com/
+(Apache : 2.4.17 MySQL : 5.7.9 PHP : 5.6.16 PHP : 7)
+
+ - Install PostgreSQL
+Follow those instructions�: http://www.mickaelsylvestre.com/2013/07/installer-postgresql-avec-wamp/  in order to install PostgreSQL and PhpPgAdmin with WampServer
+For our project, we use version 9.5.1 of PostgreSQL
+For our project, we use version 5.1 of PhpPgAdmin
+
+ - Install Composer
+Download and install Composer via this URL�: https://getcomposer.org/download/
+
+ - Laravel installation
+ You need to enable those extensions :�
+   OpenSSL PHP Extension  
+   PDO PHP Extension
+   Mbstring PHP Extension
+   Tokenizer PHP Extension
+This video will show you how to enable those extensions with WampServer: https://www.youtube.com/watch?v=R2olTlKZmMU 
+
+ - Download tortoise svn
+Visit this website, download and install tortoise svn : https://tortoisesvn.net/downloads.html
+
+ - Download our project 
+Checkout our project in the www  WampServer directory
+Visit this website to see how to checkout a project : https://tortoisesvn.net/docs/nightly/TortoiseSVN_en/tsvn-dug-checkout.html
+The URL of our project is : https://services.emi.u-bordeaux.fr/projet/svn/pdp-pret-de-velo
+
+Our project is divide in two : 
+  - Admin part : you can access the admin part via : http://localhost/pdp-pret-de-velo/trunk/WebSite/pdp/public/panel/login
+  - Client part : you can access the client part via : http://localhost/pdp-pret-de-velo/trunk/WebSite/pdp/public/
+
+Then go in the www/pdp-pret-de-velo/trunk/WebSite/pdp folder and type this line in a terminal : 
+
+php artisan pdp-pret-de-velos:install
+
+The client part and the admin part are now available
+
+
+
+DOCUMENTATION :
+---------------
+
+

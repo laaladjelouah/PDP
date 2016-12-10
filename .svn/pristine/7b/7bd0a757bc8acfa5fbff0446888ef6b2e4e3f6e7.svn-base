@@ -1,0 +1,8 @@
+Pour tester l'application mobile, veuillez suivre ces étapes : 
+-Installer NodeJS (disponible sur ce lien : https://nodejs.org/en/ ).
+-Ouvrir la console (terminal).
+-Exécuter la commande suivante pour installer ionic et cordova : npm install -g ionic cordova
+-Copier le dossier contenant le projet sur votre espace de travail.
+-Se placer dans votre espace de travail et dans le dossier contenant le projet ensuite.
+-Exécuter la commande suivante afin de lancer un serveur local : ionic serve
+-Ouvrir le navigateur et accéder à localhost.

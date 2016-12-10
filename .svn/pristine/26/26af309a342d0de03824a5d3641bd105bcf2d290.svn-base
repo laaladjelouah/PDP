@@ -1,0 +1,10 @@
+<ion-view title="Bienvenue!">
+    <ion-content>
+ <ng-map center='current-position'
+    geo-fallback-center="[40.74, -74.18]"
+    geo-callback="vm.callbackFunc('you')"
+    ></ng-map>
+
+ 
+    </ion-content>
+</ion-view>

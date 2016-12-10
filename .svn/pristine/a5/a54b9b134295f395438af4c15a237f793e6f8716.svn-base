@@ -1,0 +1,57 @@
+<?php $__env->startSection('title'); ?>
+Abonnement
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+<?php if(session('status')): ?>
+<div class="alert alert-success">
+    <?php echo e(session('status')); ?>
+
+</div>
+<?php endif; ?>
+<?php if(session('status_not_modified')): ?>
+<div class="alert alert-danger">
+    <?php echo e(session('status_not_modified')); ?>
+
+</div>
+<?php endif; ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Abonnement</div>
+                <div class="panel-body">
+                    <h4>Abonné depuis le :</h4>
+                    <p><?php echo e(Auth::user()->created_at); ?></p>
+
+                    <h4>Abonnement</h4>
+                    <p> 
+
+                        <?php if(Auth::user()->subscriber == 'true'): ?>
+                        Actif
+                        <?php else: ?>
+                        Inactif
+                        <?php endif; ?>
+                    </p>
+
+                    <h4>Se désabonner</h4>
+                    <p>Si vous souahitez vous désobonner, cliquez sur le bouton ci-dessous
+                        <span class="label label-warning">Attention : si vous cliquez sur ce bouton
+                            votre compte sera clos et vous ne pourrez plus vous connecter.</span>
+                    </p>
+
+                    <div class="col-md-6 col-md-offset-4">
+                        <form action="<?php echo e(url('subscription/unsubscribe')); ?>">
+                            <input type="submit" class="btn btn-primary" value="Se désabonner">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

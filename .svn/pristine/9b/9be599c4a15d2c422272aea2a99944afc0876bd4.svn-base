@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class AddBikeTest extends TestCase {
+
+    use DatabaseTransactions;
+
+    public function BikeLockTest()
+    {      $this->visit('/panel/login')
+        ->type('admin@change.me', 'email')
+        ->type('12345', 'password')
+        ->press('Login')
+        ->see('Dashboard')
+        ->click('Bikes')
+        ->see('/public/panel/bike/all')
+        ->click('BikeLocks')
+        ->see('/public/panel/BikeLock/all')
+        ->press('Add')
+        ->see('/public/panel/BikeLock/edit')
+        ->type('test id lock', 'id')
+        ->type('test id bike', 'bike_id')
+        ->press('save')
+        ->see('/public/panel/BikeLock/edit?insert=test_id');
+
+
+
+
+
+
+
+
+    }
+}

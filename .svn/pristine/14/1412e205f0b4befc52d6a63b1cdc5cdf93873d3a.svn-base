@@ -1,0 +1,12 @@
+@extends('layouts.app')
+
+@section('title')
+carte de credit
+@endsection
+
+@section('content')
+
+<div id='content'>
+    This is our model data: {{ $credit_card_data }}
+</div>
+@endsection

@@ -1,0 +1,41 @@
+<?php $__env->startSection('page-wrapper'); ?>
+
+
+    <?php
+    $urls = \Config::get('panel.panelControllers');
+    $linkItems  = \Serverfireteam\Panel\libs\dashboard::getItems();
+    ?>
+
+
+  <p> <i class="fa fa-cog fa-spin fa-5x"></i>  </p>
+
+  <?php if($helper_message): ?>
+	<div>&nbsp;</div>
+	<div class="alert alert-info">
+		<h3 class="help-title"><?php echo e(trans('rapyd::rapyd.help')); ?></h3>
+		<?php echo e($helper_message); ?>
+
+	</div>
+    <?php endif; ?>
+
+    <p>
+        <?php echo $edit; ?>
+
+    </p>
+
+
+
+
+
+  <p>
+
+      <button type="button" class="btn btn-primary"   value="back" onClick="window.history.back()" >Back</button>
+  </p>
+
+
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('panelViews::mainTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

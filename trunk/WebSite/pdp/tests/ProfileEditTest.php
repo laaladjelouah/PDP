@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class ProfileEditTest extends TestCase {
+
+    use DatabaseTransactions;
+
+    public function testeditprofile() {
+        /*
+          $this->visit('/panel/login')
+          ->type('admin@change.me', 'email')
+          ->type('12345', 'password')
+          ->press('Login')
+          ->see('Dashboard')
+          ->click('Paramétres')
+          ->click('modifier mon profile')
+          ->seePageIs('editProfile')
+          ->type('test name', 'first_name')
+          ->type('test last name', 'last_name')
+          ->type('test@test.com', 'email')
+          ->press('metre à jour')
+          ->see('Votre profile a été mis à jour.'); */
+    }
+
+}

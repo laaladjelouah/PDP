@@ -1,0 +1,107 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\User as User;
+use App\ProfileModel as ProfileModel;
+use App\Http\Controllers\Controller;
+
+class ProfileController extends Controller {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index() {
+        return view('profile.profile');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request) {
+        // dd('je suis la');
+        //dd($request->except('_token'));
+        $user = User::find(\Auth::id());
+        //dd($request->email);
+        //Verify that the field email is unique in users table
+
+       // dd(base_path());
+        if (strcmp($user->email, $request->email) !== 0) {
+            $this->validate($request, ['email' => 'required|email|max:255|unique:users',]);
+        }
+        $this->validate($request, [
+            'lastname' => 'required|max:255',
+            'firstname' => 'required|max:255',
+            'birthdate' => 'required|date',
+            'password' => 'required|confirmed|min:6',
+            'phoneNumber' => 'required|max:10',
+        ]);
+        $data = $request->except('_token');
+        // dd(get_class($data));
+        $modified = ProfileModel::store($data);
+        //dd($request->session()->attributes);
+        if ($modified) {
+            return redirect('profile')->with('status', 'Votre profil a bien été mis à jour.');
+        }
+        return redirect('profile')->with('status_not_modified', "Aucune information n'a été modifiée.");
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id) {
+        return view('profile.modifyProfile');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request) {
+        //$user_id = Auth::user()->id;
+        //return view('profile.modifyProfile')->with($id, $user_id);
+        return view('profile.modifyProfile');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id) {
+        //
+    }
+
+}

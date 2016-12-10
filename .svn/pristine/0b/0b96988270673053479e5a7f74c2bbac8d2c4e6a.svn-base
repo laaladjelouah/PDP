@@ -1,0 +1,67 @@
+<?php 
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use \Serverfireteam\Panel\CrudController;
+
+use Illuminate\Http\Request;
+
+class BikeController extends CrudController{
+
+    public function all($entity){
+        parent::all($entity);
+
+		$this->filter = \DataFilter::source(new Bike());
+		$this->filter->add('id', 'ID', 'text');
+
+		$this->filter->submit('search');
+		$this->filter->reset('reset');
+		$this->filter->build();
+
+		$this->grid = \DataGrid::source($this->filter);
+		$this->grid->add('id', 'ID',true);
+		$this->grid->add('reserved', 'reservation',true);
+		$this->grid->add('status', 'state',true);
+		$this->grid->add('photo', 'Photo', 'image');
+		$this->grid->add('updated_at', 'Updated at');
+
+
+
+		$this->addStylesToGrid();
+		$this->grid->paginate(10);    //pagination 10 entrée par page
+
+
+		return $this->returnView();
+    }
+    
+    public function  edit($entity){
+        
+        parent::edit($entity);
+
+		/* Simple code of  edit part , List of all fields here : http://laravelpanel.com/docs/master/crud-fields */
+
+		$this->edit = \DataEdit::source(new Bike());
+
+		$this->edit->label('Bicycle information');
+
+		$this->edit->text('id', 'ID')->rule('required');
+
+		//$this->edit->text('reserved', 'Reserved');
+		$this->edit->text('reserved', 'Reserved', 'radiogroup')->option('OUI', 'OUI')->option('NON', 'NON');
+		$this->edit->add('status', 'state', 'radiogroup')->option('TREBON', 'TRES BON')->option('BON', 'BON')->option('MOUEN', 'MOYEN')->option('DIED', 'DIED');
+
+
+		//$this->edit->text('status', 'State');
+
+		$this->edit->add('photo', 'Photo', 'image')->move('uploads/images/','id')->preview(200,200);
+
+
+
+
+
+
+		return $this->returnEditView();
+    }    
+}

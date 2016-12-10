@@ -1,0 +1,12 @@
+<?php $__env->startSection('title'); ?>
+carte de credit
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div id='content'>
+    This is our model data: <?php echo e($credit_card_data); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

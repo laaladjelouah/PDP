@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class AllTest extends TestCase {
+
+    use DatabaseTransactions;
+
+    public function All_History_Test()
+    {     
+
+            $this->visit('/panel/login')
+                 ->type('admin@change.me', 'email')
+                 ->type('12345', 'password')
+                 ->press('Login')
+                 ->see('Dashboard')
+                 ->click('Histors')
+                 ->see('/public/panel/History/all');
+
+
+    }
+}

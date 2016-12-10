@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/wamp/www/pdp/resources/views/layouts/app.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/config/filesystems.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/auth/passwords/email.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/Controller.php</file>
+            <file>file:/D:/wamp/www/pdp/app/ProfileModel.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/profile/modifyProfile.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/Map/bikesMap.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/ProfileController.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Kernel.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/welcome.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/config/laravel-backup.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/SessionController.php</file>
+            <file>file:/D:/wamp/www/pdp/.env</file>
+            <file>file:/D:/wamp/www/pdp/resources/lang/fr/pagination.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Middleware/EncryptCookies.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/routes.php</file>
+            <file>file:/D:/wamp/www/pdp/config/database.php</file>
+            <file>file:/D:/wamp/www/pdp/database/migrations/2014_10_12_000000_create_users_table.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/lang/fr/validation.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/CreditCardController.php</file>
+            <file>file:/D:/wamp/www/pdp/config/backup-manager.php</file>
+            <file>file:/D:/wamp/www/pdp/database/migrations/2016_02_12_132251_create_my_models_table.php</file>
+            <file>file:/D:/wamp/www/pdp/app/User.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Middleware/VerifyCsrfToken.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/auth/register.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/auth/passwords/reset.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/Auth/AuthController.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/profile/profile.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/credit-card/index.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/app/my_model.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/Auth/PasswordController.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/auth/emails/password.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/HomeController.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/lang/fr/auth.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Middleware/RedirectIfAuthenticated.php</file>
+            <file>file:/D:/wamp/www/pdp/config/app.php</file>
+            <file>file:/D:/wamp/www/pdp/database/migrations/2016_02_10_204215_create_admin_table.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Controllers/MapController.php</file>
+            <file>file:/D:/wamp/www/pdp/config/auth.php</file>
+            <file>file:/D:/wamp/www/pdp/app/Http/Middleware/Authenticate.php</file>
+            <file>file:/D:/wamp/www/pdp/composer.json</file>
+            <file>file:/D:/wamp/www/pdp/app/CreditCardModel.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/auth/login.blade.php</file>
+            <file>file:/D:/wamp/www/pdp/resources/views/home.blade.php</file>
+        </group>
+    </open-files>
+</project-private>

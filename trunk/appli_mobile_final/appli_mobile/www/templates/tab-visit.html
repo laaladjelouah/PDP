@@ -1,0 +1,15 @@
+<ion-view title="Bienvenue">
+    <ion-content>
+ <ng-map center='current-position'
+    geo-fallback-center="[40.74, -74.18]"
+    geo-callback="vm.callbackFunc('you')"
+    ></ng-map>
+
+             <div class="padding">
+                <button go-click="/tabs/signup" class="button button-block button-positive">Inscription</button>
+                <button go-click="/tabs/login" class="button button-block button-dark">Connexion</button>
+                <button go-click= "/about" class="button button-block button-calm"> A propos </button>
+                
+            </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class AllBikeTest extends TestCase
+{
+
+    use DatabaseTransactions;
+
+    public function All_Bike_Test()
+    {
+        $this->visit('/panel/login')
+            ->type('admin@change.me', 'email')
+            ->type('12345', 'password')
+            ->press('Login')
+            ->see('Dashboard')
+            ->click('Bikes')
+            ->see('/public/panel/Bike/all');
+
+
+    }
+}

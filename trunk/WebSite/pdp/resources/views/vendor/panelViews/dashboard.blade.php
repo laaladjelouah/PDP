@@ -1,0 +1,331 @@
+    @extends('panelViews::mainTemplate')
+    @section('page-wrapper')
+
+
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <!-- tableau de bord !-->
+                <h1 class="page-header">  <strong> {{ \Lang::get('panel::fields.dashboard') }} </strong> </h1>
+
+                <div class="icon-bg ic-layers"></div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+        <div class="row box-holder">
+
+
+            @if(is_array(\Serverfireteam\Panel\Link::returnUrls()))
+                @foreach (Serverfireteam\Panel\libs\dashboard::getItems() as $box)
+                    @if(($box['title'] != 'BikeLocks') &($box['title'] != 'Links'))
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel ">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-7 title">
+                                            <strong> {{ $box['title'] }} </strong>
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <div class="huge">{{$box['count']}}</div>
+
+                                            <!--  recuperer le nombre de cadenas   !-->
+
+                                            <div></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-footer">
+
+                                    <a href='{{$box['showListUrl']}}' class="pull-left">{{ \Lang::get('panel::fields.showList') }} <i class="icon ic-chevron-right"></i></a>
+
+                                    <!--si c'est autre chose j'afiche pas le bouton ajouter !-->
+                                    @if(($box['title'] == 'Links')||($box['title'] == 'Bikes') )
+
+                                        <div class="pull-right"> <a class="add " href="{{$box['addUrl']}}">{{ \Lang::get('panel::fields.Add') }}  </a></div>
+
+                                    @endif
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    @endif
+
+                @endforeach
+            @endif
+
+
+
+                            <!-- recuperation des donnée du cadenas !-->
+
+                      <!--   @ foreach ( \App\BikeLock::allCached() as $info)
+
+                                <p> { {$info['latitude']}} : { {$info['longitude']}}</p>
+
+                                @ endforeach !-->
+
+
+
+
+        </div>
+
+        <!--    le carrée de la carte      !-->
+        <div class="panel-body">
+            <div class="col-lg-12 col-md-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-map-marker red "></i><strong>Velos Disponible</strong>
+
+                        <div class="panel-actions">
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel-body-map">
+
+                        <!-- Un élément HTML pour recueillir l’affichage -->
+                        <div id="maposition"></div>
+                        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+                        <!-- Un élément HTML pour recueillir la carte -->
+                        <div id="map" style="width:1015px;height:480px"></div>
+
+                        <!-- Chargement de l'API Google maps -->
+                        <!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script> !-->
+
+                        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+
+
+
+                        <script>
+
+
+                            // This example adds a search box to a map, using the Google Place Autocomplete
+                            // feature. People can enter geographical searches. The search box will return a
+                            // pick list containing a mix of places and predicted search terms.
+
+                            // This example requires the Places library. Include the libraries=places
+                            // parameter when you first load the API. For example:
+                            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+
+
+
+                            function initAutocomplete() {
+
+                                if (navigator.geolocation) {
+
+                                    var map = new google.maps.Map(document.getElementById('map'), {
+                                        center: {lat: 44.835178, lng: -0.577126},
+                                        zoom: 16,
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                        disableDefaultUI: false
+
+                                    });
+
+                                    // Create the search box and link it to the UI element.
+                                    var input = document.getElementById('pac-input');
+                                    var searchBox = new google.maps.places.SearchBox(input);
+                                    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                                    // Bias the SearchBox results towards current map's viewport.
+                                    map.addListener('bounds_changed', function () {
+                                        searchBox.setBounds(map.getBounds());
+                                    });
+
+                                    var markers = [];
+                                    // Listen for the event fired when the user selects a prediction and retrieve
+                                    // more details for that place.
+                                    searchBox.addListener('places_changed', function () {
+                                        var places = searchBox.getPlaces();
+
+                                        if (places.length == 0) {
+                                            return;
+                                        }
+
+                                        // Clear out the old markers.
+                                        markers.forEach(function (marker) {
+                                            marker.setMap(null);
+
+                                        });
+                                        markers = [];
+
+                                        // For each place, get the icon, name and location.
+                                        var bounds = new google.maps.LatLngBounds();
+                                        places.forEach(function (place) {
+                                            var icon = {
+                                                url: place.icon,
+                                                size: new google.maps.Size(71, 71),
+                                                origin: new google.maps.Point(0, 0),
+                                                anchor: new google.maps.Point(17, 0),
+                                                scaledSize: new google.maps.Size(17, 17),
+                                                zoom: 17
+                                            };
+
+                                            // Create a marker for each place.
+                                            markers.push(new google.maps.Marker({
+                                                map: map,
+                                                icon: icon,
+                                                title: place.name,
+                                                position: place.geometry.location,
+                                                strokeColor: "blue"
+                                            }));
+
+                                            if (place.geometry.viewport) {
+                                                // Only geocodes have viewport.
+                                                bounds.union(place.geometry.viewport);
+                                                setMarkers(map);
+                                            } else {
+                                                bounds.extend(place.geometry.location);
+                                            }
+                                        });
+                                        map.fitBounds(bounds);
+                                        setMarkers(map);
+
+                                    });
+
+                                    //marker static
+                                    var markers1 = [
+                                        ['bike-1', 44.809342, -0.592120, 4],
+                                        ['bike-2', 44.809403, -0.592123, 5],
+                                        ['bike-3', 44.808837, -0.592350, 3],
+                                        ['bike-4', 44.8059025, -0.5940621, 2],
+                                        ['bike-5', 44.8031621, -0.5853074, 1],
+                                        ['bike-6', 44.8076076,	-0.6023877, 6]
+
+                                    ];
+
+
+                                    var labels1 = 'V';
+
+                                    //fonction qui progete les marker static
+                                    function setMarkers(map) {
+                                        for (var i = 0; i < markers1.length; i++) {
+                                            var marker = markers1[i];
+                                            var marker = new google.maps.Marker({
+                                                position: {lat: marker[1], lng: marker[2]},
+
+                                                map: map,
+                                                animation: google.maps.Animation.DROP,
+                                                title: 'BIKE',
+                                                label: labels1,
+                                            });
+                                        }
+                                    }
+
+                                    // Fonction de callback en cas de succès
+                                    function affichePosition(position) {
+
+                                        var infopos = "Position déterminée : <br>";
+                                        infopos += "Latitude : " + position.coords.latitude + "<br>";
+                                        infopos += "Longitude: " + position.coords.longitude + "<br>";
+                                        infopos += "Altitude : " + position.coords.altitude + "<br>";
+
+                                        // On instancie un nouvel objet LatLng pour Google Maps
+                                        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+
+                                        // Ajout d'un marqueur à la position trouvée
+                                        var marker = new google.maps.Marker({
+
+                                            position: latlng,
+                                            map: map,
+                                            title: "me",
+                                            // label: labels,
+                                            // animation: google.maps.Animation.Drop,
+                                            animation: google.maps.Animation.BOUNCE,
+
+                                        });
+
+                                        map.panTo(latlng);
+                                        setMarkers(map);
+
+                                    }
+
+                                    // Fonction de callback en cas d’erreur
+                                    function erreurPosition(error) {
+                                        var info = "Erreur lors de la géolocalisation : ";
+                                        switch (error.code) {
+                                            case error.TIMEOUT:
+                                                info += "Timeout !";
+                                                break;
+                                            case error.PERMISSION_DENIED:
+                                                info += "Vous n’avez pas donné la permission";
+                                                break;
+                                            case error.POSITION_UNAVAILABLE:
+                                                info += "La position n’a pu être déterminée";
+                                                break;
+                                            case error.UNKNOWN_ERROR:
+                                                info += "Erreur inconnue";
+                                                break;
+                                        }
+                                        document.getElementById("maposition").innerHTML = info;
+                                    }
+
+                                    setMarkers(map);
+                                    navigator.geolocation.getCurrentPosition(affichePosition, erreurPosition);
+                                    setMarkers(map);
+
+
+                                }
+                                else {
+                                    alert("Dommage... Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+
+                                }
+                            }
+
+
+
+
+
+                        </script>
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC60BlnlCiuOYoq-TdDVubm4XPWGRKWCZs&libraries=places&callback=initAutocomplete"
+                                async defer></script>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        </br>
+        </br>
+
+
+
+
+
+
+
+        <script>
+            $(function(){
+                var color = ['primary','green','orange','red','purple','green2','blue2','yellow'];
+                var pointer = 0;
+                $('.panel').each(function(){
+                    if(pointer > color.length) pointer = 0;
+                    $(this).addClass('panel-'+color[pointer]);
+                    $(this).find('.pull-right .add').addClass('panel-'+color[pointer]);
+                    pointer++;
+                })
+                // check for update of laravelpanel
+                $.getJSON( "http://api.laravelpanel.com/checkupdate/{{ $version }}", function( data ) {
+                    if(data.needUpdate){
+                        $(".update a").text(data.text);
+                        $(".update").removeClass('hide');
+                    }
+                })
+
+            })
+        </script>
+
+
+    @stop

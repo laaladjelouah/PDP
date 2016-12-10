@@ -1,0 +1,71 @@
+<?php 
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use \Serverfireteam\Panel\CrudController;
+
+use Illuminate\Http\Request;
+
+class HistoryController extends CrudController{
+
+
+
+    public function all($entity){
+        parent::all($entity); 
+
+        /** Simple code of  filter and grid part , List of all fields here : http://laravelpanel.com/docs/master/crud-fields */
+
+
+			$this->filter = \DataFilter::source(new history());
+			$this->filter->add('name', 'Name', 'text');
+			$this->filter->submit('search');
+			$this->filter->reset('reset');
+			$this->filter->build();
+
+			$this->grid = \DataGrid::source($this->filter);
+
+			$this->grid->add('id', 'Name');
+			$this->grid->add('bike_id', 'Bike id');
+		    $this->grid->add('active', 'State');
+		    $this->grid->add('start_borrowing_date', 'Begin borrow',true);
+		    $this->grid->add('end_borrowing_date', 'End borrow');
+		    $this->grid->add('status_before', 'Status before');
+		    $this->grid->add('picture_before', 'Picture before');
+		    $this->grid->add('status_after', 'status after');
+		    $this->grid->add('picture_after', 'Picture after');
+			$this->addStylesToGrid1();
+		    $this->grid->paginate(10); //pagination 10 entrée par page
+
+
+                 
+        return $this->returnView();
+    }
+    
+    public function  edit($entity){
+        
+        parent::edit($entity);
+
+        /* Simple code of  edit part , List of all fields here : http://laravelpanel.com/docs/master/crud-fields */
+	
+			$this->edit = \DataEdit::source(new history());
+
+		    $this->edit->add('id', 'Name','text');
+			//$this->edit->label('Edit Category');
+			$this->edit->add('status_before', 'state before', 'radiogroup')->option('TREBON', 'TRES BON')->option('BON', 'BON')->option('MOUEN', 'MOYEN')->option('DIED', 'DIED');
+			//$this->edit->add('status_before', 'Status before','text');
+            $this->edit->add('picture_before', 'Photo avant', 'image')->move('uploads/imagesavant/')->preview(200,200);
+
+			//$this->edit->add('status_after', 'Status after','text');
+		$this->edit->add('status_after', 'state after', 'radiogroup')->option('TRE BON', 'TRES BON')->option('BON', 'BON')->option('MOYEN', 'MOYEN')->option('DIED', 'DIED');
+			$this->edit->add('picture_after', 'Photo apres', 'image')->move('uploads/imagesapres/')->preview(200,200);
+
+
+
+
+
+       
+        return $this->returnEditView();
+    }    
+}

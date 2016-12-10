@@ -1,0 +1,195 @@
+<?php $__env->startSection('title'); ?>
+Profile
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<?php if(count($errors) > 0): ?>
+<div class="alert alert-danger">
+    <ul>
+        <?php foreach($errors->all() as $error): ?>
+        <li><?php echo e($error); ?></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Modification du profile</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/profile/store')); ?>">
+                        <?php echo csrf_field(); ?>
+
+
+                        <div class="form-group<?php echo e($errors->has('lastname') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Nom</label>
+
+                            <div class="col-md-6">
+                                <!-- Auth::user()->lastname is the default value of this field. If the form is not valid, the value will change
+                                     to lastname when the form will display again-->
+                                <input type="text" class="form-control" name="lastname" value="<?php echo e(old('lastname', Auth::user()->lastname)); ?>">
+
+                                <?php if($errors->has('lastname')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('lastname')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('firstname') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Prénom</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="firstname" value="<?php echo e(old('firstname', Auth::user()->firstname)); ?>">
+
+                                <?php if($errors->has('firstname')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('firstname')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('birthdate') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Date de naissance</label>
+
+                            <div class="col-md-6">
+                                <input type="date" class="form-control" name="birthdate" value="<?php echo e(old('birthdate', Auth::user()->birthdate)); ?>">
+
+                                <?php if($errors->has('birthdate')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('birthdate')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Adresse e-mail</label>
+
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="<?php echo e(old('email', Auth::user()->email)); ?>">
+
+                                <?php if($errors->has('email')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('email')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Mot de passe</label>
+
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password">
+
+                                <?php if($errors->has('password')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('password')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Confirmation du mot de passe</label>
+
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password_confirmation">
+
+                                <?php if($errors->has('password_confirmation')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('phoneNumber') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Numéro de téléphone</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="phoneNumber" value="<?php echo e(old('phoneNumber', Auth::user()->phoneNumber)); ?>"  >
+
+                                <?php if($errors->has('phoneNumber')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('phoneNumber')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('card_number') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Numéro de carte</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="card_number" value="<?php echo e(old('card_number')); ?>"  readonly="true" disabled="true">
+
+                                <?php if($errors->has('card_number')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('card_number')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('card_owner') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Numéro du porteur</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="card_owner" value="<?php echo e(old('card_owner')); ?>"  readonly="true" disabled="true">
+
+                                <?php if($errors->has('card_owner')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('card_owner')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('expiration_date') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Date d'expiration</label>
+
+                            <div class="col-md-4">
+                                <input type="month" class="form-control" name="expiration_date" value="<?php echo e(old('expiration_date')); ?>"  readonly="true" disabled="true">
+
+                                <?php if($errors->has('expiration_date')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('expiration_date')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('security_code') ? ' has-error' : ''); ?>">
+                            <label class="col-md-4 control-label">Code de sécurité</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="security_code" value="<?php echo e(old('security_code')); ?>"  readonly="true" disabled="true">
+
+                                <?php if($errors->has('security_code')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('security_code')); ?></strong>
+                                </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>Enregistrer
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

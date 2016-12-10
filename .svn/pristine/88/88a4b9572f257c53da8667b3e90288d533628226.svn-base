@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\User;
+use App\CreditCardModel;
+use Validator;
+use \Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+class AuthController extends Controller {
+    /*
+      |--------------------------------------------------------------------------
+      | Registration & Login Controller
+      |--------------------------------------------------------------------------
+      |
+      | This controller handles the registration of new users, as well as the
+      | authentication of existing users. By default, this controller uses
+      | a simple trait to add these behaviors. Why don't you explore it?
+      |
+     */
+
+use AuthenticatesAndRegistersUsers,
+    ThrottlesLogins;
+
+    /**
+     * Where to redirect users after login / registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
+
+    /**
+     * Create a new authentication controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data) {
+        //dd($data);
+        return Validator::make($data, [
+                    'lastname' => 'required|max:255',
+                    'email' => 'required|email|max:255|unique:users',
+                    'firstname' => 'required|max:255',
+                    'birthdate' => 'required|date',
+                    'password' => 'required|confirmed|min:6',
+                    'phoneNumber' => 'required|size:10',
+                    'card_number' => 'required|size:16',
+                    'card_owner' => 'required',
+                    'expiration_date' => 'required|date|after:today',
+                    'security_code' => 'required|size:3',
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create(array $data) {
+
+        $data = array_add($data, 'credit', '30.0');
+        $data = array_add($data, 'blacklisted', 'false');
+        $data = array_add($data, 'subscriber', 'true');
+
+        //Create the new user
+        $new_user = User::create([
+                    'lastname' => $data['lastname'],
+                    'email' => $data['email'],
+                    'firstname' => $data['firstname'],
+                    'birthdate' => $data['birthdate'],
+                    'password' => bcrypt($data['password']),
+                    'credit' => $data['credit'],
+                    'phoneNumber' => $data['phoneNumber'],
+                    'blacklisted' => $data['blacklisted'],
+                    'subscriber' => $data['subscriber'],
+        ]);
+
+        $user_attributes = $new_user->attributesToArray();
+
+        // Create the user's credit card
+        $credit_card = CreditCardModel::create([
+                    'user_id' => $user_attributes['id'],
+                    'expiration_date' => $data['expiration_date'],
+                    'credit_card_number' => $data['card_number'],
+                    'cvv_code' => $data['security_code'],
+        ]);
+
+        return $new_user;
+    }
+
+}

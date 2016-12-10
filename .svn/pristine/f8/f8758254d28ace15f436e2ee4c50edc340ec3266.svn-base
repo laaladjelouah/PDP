@@ -1,0 +1,5 @@
+copy.src.on.open=false
+debug.url=DEFAULT_URL
+index.file=public/index.php
+run.as=LOCAL
+url=http://localhost/pdp/

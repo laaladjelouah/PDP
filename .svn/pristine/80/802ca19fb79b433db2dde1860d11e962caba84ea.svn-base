@@ -1,0 +1,66 @@
+<?php $__env->startSection('bodyClass'); ?>
+login
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('body'); ?>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    
+                    <div class="mes-box ">
+                    <?php if($mesType=='error'): ?><div class="error-box animated fadeInDown"><span class="ic-caution"></span> <?php echo e($message); ?></div><?php endif; ?>  
+                    <?php if($mesType=='info'): ?> <div class="info-box animated fadeInDown"><?php echo $message; ?></div><?php endif; ?>
+                    </div>
+                    
+                    <div class="login-panel panel panel-default animated fadeInDown">
+                     
+                        <div class="panel-heading">
+                            <?php if($mesType=='message'): ?> <h3 class="panel-title"> <strong> <?php echo e($message); ?> </strong></h3>  <?php endif; ?>
+                        </div>
+                        <div class="panel-body">
+                            <div class="logo-holder">
+                                <img src="<?php echo e(asset(Config::get('panel.logo'))); ?>" />
+                            </div>
+                            <?php echo Form::open(array('url' => 'panel/login')); ?>
+
+                                <fieldset>
+                                    <div class="form-group">
+					<?php if(\Config::get('panel.demo') == true): ?>
+						<p><i>Demo Username: admin@change.me</i></p>
+					<?php endif; ?>
+                                        <input class="form-control" placeholder="<?php echo e(\Lang::get('panel::fields.email')); ?>" name="email" type="text" autofocus>
+                                    </div>
+                                    <div class="form-group">
+					<?php if(\Config::get('panel.demo') == true): ?>
+						<p><i>Demo Password: 12345</i></p>
+					<?php endif; ?>
+                                        <input class="form-control" placeholder="<?php echo e(\Lang::get('panel::fields.password')); ?>"  id="password" name="password" type="password" value="">
+                        <label>
+                            <input type="checkbox" id="show" onchange="document.getElementById('password').type=this.checked ? 'text' : 'password'">
+                            Show password
+                        </label>
+
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me">
+                                            <?php echo e(\Lang::get('panel::fields.rememberMe')); ?>
+
+                                        </label>
+                                        <label class="pull-right">
+                                            <a href="remind"> <?php echo e(\Lang::get('panel::fields.forgetPassword')); ?> </a>
+                                        </label>
+                                    </div>
+                                    <!-- Change this to a button or input when using this as a form -->
+                                    <input type="submit"  class="btn btn-lg btn-success btn-block" value="<?php echo e(\Lang::get('panel::fields.login')); ?> ">
+                                </fieldset>
+                            <?php echo Form::close(); ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('panelViews::master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

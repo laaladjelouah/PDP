@@ -1,0 +1,28 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class CreditCardModel extends Model {
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'CreditCard';
+    protected $primaryKey = 'credit_card_id';
+    protected $fillable = ['user_id', 'credit_card_number',
+        'expiration_date', 'cvv_code'];
+    public $timestamps = false;
+
+    public static function store(Array $request) {
+        //dd($table);
+        //$user = User::find(\Auth::id());
+        //$table->credit_card_number = $request['card_number'];
+        //$table->user_id = $request['card_number'];
+        // $table->save();
+    }
+
+}

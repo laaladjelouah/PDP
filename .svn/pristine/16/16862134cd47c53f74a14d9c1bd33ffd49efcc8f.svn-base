@@ -1,0 +1,31 @@
+<?php $__env->startSection('page-wrapper'); ?>
+
+<?php if(Session::has('message')): ?>
+    <div class="alert-box success">
+        <h2><?php echo e(Session::get('message')); ?></h2>
+    </div>
+<?php endif; ?>
+
+<?php if($demo_status == true): ?>
+	<h4>You are not allowed to change the password in demo version of panel.</h4>
+<?php else: ?>
+
+	<div class="row">
+		<div class="col-xs-4">
+			<form action="<?php echo e(action('\Serverfireteam\Panel\RemindersController@postChangePassword')); ?>" method="POST">
+				<label>Email Address:</label> <input class="form-control" type="email" name="email"><br />
+				<label><?php echo e(\Lang::get('panel::fields.currentPassword')); ?></label>
+				<input class="form-control" type="password" name="current_password"><br />
+				<label><?php echo e(\Lang::get('panel::fields.password')); ?></label> <input  class="form-control" type="password" name="password"><br />
+				<label><?php echo e(\Lang::get('panel::fields.rePassword')); ?></label>
+				<input class="form-control" type="password" name="password_confirmation"><br />
+				<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+				<input class="btn btn-default" type="submit" value="<?php echo e(\Lang::get('panel::fields.ChangePassword')); ?>">
+			</form>
+		</div>
+	</div>
+
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('panelViews::mainTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

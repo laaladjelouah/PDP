@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Bike extends Model {
+
+    protected $table = 'Bike';
+
+    static $cache = [];
+
+    public static function allCached($forceRefresh = false)
+    {
+        if (!isset(self::$cache['all']) || $forceRefresh) {
+            self::$cache['all'] = Bike::all();
+        }
+
+        return self::$cache['all'];
+    }
+
+}

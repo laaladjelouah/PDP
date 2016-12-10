@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/database/factories/ModelFactory.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/tests/app/Http/HomeControllerTest.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/app/User.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/resources/views/welcome.blade.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/database/migrations/2014_10_12_000000_create_users_table.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/tests/ExampleTest.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/database/seeds/UsersTableSeeder.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/resources/views/auth/register.blade.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/app/Http/Controllers/Auth/AuthController.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/app/users.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/resources/views/home.blade.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/tests/app/Http/ProfileControllerTest.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/tests/RegistrationTest.php</file>
+            <file>file:/D:/wamp64/www/pdp1/trunk/WebSite/pdp/tests/ConnexionTest.php</file>
+        </group>
+    </open-files>
+</project-private>

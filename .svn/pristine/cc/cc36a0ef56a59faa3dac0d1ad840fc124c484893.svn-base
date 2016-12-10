@@ -1,0 +1,1358 @@
+<html xmlns:ganttproject="http://ganttproject.sf.net/">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GanttProject - gantt</title>
+<style>
+	    A:link {
+		FONT-WEIGHT: bold;  TEXT-DECORATION: none;
+		FONT-SIZE: 14px ; COLOR: black;
+	    }
+	    A:visited {
+		FONT-WEIGHT: bold;  TEXT-DECORATION: none;
+		FONT-SIZE: 14px ; COLOR: black; BACKGROUND: none
+	    }
+	    A:hover {
+		FONT-WEIGHT: bold;  TEXT-DECORATION: none;
+		FONT-SIZE: 14px ; COLOR: white ; BACKGROUND: #6d9ec6;
+	    }
+	    .notes {
+	      padding-left: 10px;
+	    }
+	    .notes pre {
+	      font-family: Arial, Helvetica;
+	      font-size: 10px;
+	      margin-top: 0px;
+	      padding-top: 0px;
+	      margin-bottom: 5px;
+	    }
+	    .attachment {
+	      padding-left: 10px;
+	    }
+	    .attachment a:link {
+	      font-weight: normal;
+	      font-size: 12px;
+	      color: #6d9ec6;
+	      background: white;
+	    }
+	    .attachment a:hover {
+	      font-weight: normal;
+	      text-decoration: underline;
+	      font-size: 12px;
+	      color: #6d9ec6;
+	      background: white;
+	    }
+	    .attachment a:visited {
+	      font-weight: normal;
+	      font-size: 12px;
+	      background: white;
+	      color: gray;
+	    }
+	    TD {
+		FONT-SIZE: 12px; COLOR: black; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+	    }
+	    UL {
+		FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+	    }
+	    LI {
+		FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+	    }
+	    H1 {
+		FONT-WEIGHT: bold; FONT-SIZE: 16pt; COLOR: #6d9ec6;
+	    }
+	    H2 {
+		FONT-WEIGHT: bold; FONT-SIZE: 16pt; COLOR: #000000;
+	    }
+	    H3 {
+		FONT-WEIGHT: bold; FONT-SIZE: 13pt; COLOR: #6d9ec6;
+	    }
+	    H4 {
+		FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #000000;
+	    }
+	    H5 {
+		FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #6d9ec6;
+	    }
+	    H6 {
+		FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000
+	    }
+
+	    </style>
+</head>
+<body bgcolor="white">
+<center>
+<style>
+div.project_name {
+  font-size: 150%;
+  color: black;
+  font-weight: bold;
+  border-top: solid #6d9ec6 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+}
+div.page_links {
+  background: #6d9ec6;
+  text-align: center;
+}
+</style>
+<center>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td bgcolor="#dddddd">
+<div class="project_name">Untitled Gantt Project</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="page_links">
+<a href="gantt.html"></a>  |
+          <a href="gantt-chart.html">Diagramme de Gantt</a> |
+          <a href="gantt-tasks.html">T&acirc;ches</a> |
+          <a href="gantt-resources.html">Ressources</a>
+</div>
+</td>
+</tr>
+</table>
+</center>
+<br>
+<style>
+td.header {
+  background: #dddddd;
+  margin: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  padding-bottom:1px;
+  border-bottom: solid black 2px;
+}
+td.cell {
+  margin: 0;
+  margin-top: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  padding-bottom:1px;
+}
+div.cell {
+}
+h5.header {
+  margin-left: 2px;
+  margin-top: 2px;
+}
+</style>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top" class="header">
+<h5 class="header">Nom</h5>
+</td><td valign="top" class="header">
+<h5 class="header">Date de d&eacute;but</h5>
+</td><td valign="top" class="header">
+<h5 class="header">Date de fin</h5>
+</td><td valign="top" class="header">
+<h5 class="header">Ressources</h5>
+</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Rendez-vous avec le client</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">11/01/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/01/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">App mobile local storage</div>
+<div class="notes">
+<pre width="40">R&eacute;alisation d'une application avec le framework Ionic (cette version contient une page d'accueil, une page d'inscription et une page de connexion) et c'est la version qu'on a rendu pour la 1&egrave;re release</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">01/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">12/02/16</div>
+</div>
+</td><td valign="top" class="cell">Romain Camberbet, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">App mobile firebase api</div>
+<div class="notes">
+<pre width="40">Nous avons utilis&eacute; l'api firebase qui nous permet d'acc&eacute;der &agrave; la base de donn&eacute;es qu'utilise le site web, chose que notre charg&eacute; de TD nous a clairement d&eacute;conseill&eacute; par la suite</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">23/03/16</div>
+</div>
+</td><td valign="top" class="cell">Romain Camberbet, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Page visiteur Appli</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">24/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">25/03/16</div>
+</div>
+</td><td valign="top" class="cell">Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Page inscription Appli</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">25/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">29/03/16</div>
+</div>
+</td><td valign="top" class="cell">Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Page connexion Appli</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/01/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/01/16</div>
+</div>
+</td><td valign="top" class="cell">Romain Camberbet, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Page d'accueil Appli</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">25/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">29/03/16</div>
+</div>
+</td><td valign="top" class="cell">Romain Camberbet</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout de l'API backand</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">25/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">31/03/16</div>
+</div>
+</td><td valign="top" class="cell">Romain Camberbet, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Consulter carte Appli</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/04/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/04/16</div>
+</div>
+</td><td valign="top" class="cell">Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Premi&egrave;re version de l'analyse des besoins</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/01/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/01/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Seconde version de l'analyse des besoins</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">25/01/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">29/01/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Critique document d'analyse</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">01/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Page r&eacute;server v&eacute;lo</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/01/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/01/16</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Documentation</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">01/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">03/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Choix des technologies</div>
+<div class="notes">
+<pre width="40">Dans cette partie, nous avons discut&eacute; des technologies qui vont &ecirc;tre utilis&eacute;es pour le projet. </pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">01/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">02/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Maquette du site</div>
+<div class="notes">
+<pre width="40">Nous avons cr&eacute;&eacute; ici l'aspect que le site doit avoir, afin de pr&eacute;visualiser l'apparence du site.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">03/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">03/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Maquette de l'application</div>
+<div class="notes">
+<pre width="40">Nous avons cr&eacute;&eacute; ici l'aspect que l'application doit avoir, afin de pr&eacute;visualiser l'apparence de l'application.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">03/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">03/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">S'authentifier</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour qu'un abonn&eacute; puisse s'authentifier.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Gestion de la base de donn&eacute;es</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Conception de la base de don&eacute;es</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Cr&eacute;ation de la base de donn&eacute;es</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Abonnement d'un visiteur</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">S'abonner</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour qu'un visiteur puisse s'abonner. D&egrave;s que le visiteur s'inscrit sur le site, il est automatiquement abonn&eacute;.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Se d&eacute;sabonner</div>
+<div class="notes">
+<pre width="40">Ici on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s qui permettent &agrave; un utilisateur de se d&eacute;sabonner</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Gestion espace perso</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'abonn&eacute; puisse g&eacute;rer(modifier, consulter...) ses informations.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">10/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Gestion du solde abonn&eacute;</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Consulter solde abonn&eacute;</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Cr&eacute;diter compte abonn&eacute;</div>
+<div class="notes">
+<pre width="40">
+
+</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Modifier infos</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'abonn&eacute; puisse modifier ses informations personnelles.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">10/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">10/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Consulter infos</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'abonn&eacute; puisse consulter ses informations personnelles.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">10/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">10/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Consulter carte</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute;  les fonctionnalit&eacute;s pour que le visiteur, l'abonn&eacute; et l'admin puissent voir la carte des v&eacute;los disponibles.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">11/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">11/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Gestion abonn&eacute;</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'administrateur puisse g&eacute;rer(chercher, contacter,p&eacute;naliser...) les utilisateur.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Chercher abonn&eacute;</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'administrateur puisse rechercher un abonn&eacute;.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Bannir abonn&eacute;</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'administrateur puisse bannir un abonn&eacute;.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">G&eacute;rer v&eacute;los</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'administrateur puisse g&eacute;rer(ajouter, supprimer...) les v&eacute;lo.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Ajouter v&eacute;lo</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'administrateur puisse ajouter un v&eacute;lo.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Supprimer v&eacute;lo</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'administrateur puisse supprimer un v&eacute;lo.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Consulter infos v&eacute;lo</div>
+<div class="notes">
+<pre width="40">Ici, on a impl&eacute;ment&eacute; les fonctionnalit&eacute;s pour que l'administrateur puisse voir les informations sur un v&eacute;lo.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Premi&egrave;re remise du projet</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Remise du code</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi, Romain Camberbet, Sofiane Lassouani, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Gestion du serveur OVH(VPS)</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Choix et achat du VPS</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Installation de putty</div>
+<div class="notes">
+<pre width="40">Installation de putty pour pouvoir acc&eacute;der au serveur via ssh</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Pr&eacute;paration du serveur</div>
+<div class="notes">
+<pre width="40">Configuration de la langues et des caract&egrave;res.
+Installation de PostegreSQL 9.4
+Installation d'apache2
+	activation du mode rewrite(pour la r&eacute;&eacute;criture d'URLs)
+Installation de php 5.6.17
+Installation de PhpPgAdmin 5.1</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Installation de svn</div>
+<div class="notes">
+<pre width="40">Cet outil est un gestionnaire de version et nous permet de r&eacute;cup&eacute;rer directement sur le VPS OVH notre projet h&eacute;berg&eacute; sur les serveurs du CREMI</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Faire pointer le nom de domaine sur le VPS OVH</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Faire pointer la page d'accueil du nom de domaine sur l'adresse IP de notre site</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/02/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout d'un ast&eacute;risque pour les champs requis des formulaires</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">02/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">02/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Cr&eacute;er des h&ocirc;tes virtuels gr&acirc;ce &agrave; Apache</div>
+<div class="notes">
+<pre width="40">Cr&eacute;er 2 h&ocirc;tes virtuels 
+ - un sur vps249724.ovh.net
+ - un sur borrowyourbike.ovh
+
+de cette mani&egrave;re, lors de mises &agrave; jour, on peut tester le site ( sur vps249724.ovh.net) sur le serveur avant de le mettre en production (sur  borrowyourbike.ovh)</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">03/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">03/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout de fichiers de tests</div>
+<div class="notes">
+<pre width="40">Ajout des fichiers de tests d'int&eacute;gration pour la page de profile, d'inscription d'un utilisateur et des fichiers de tests unitaires pour les routes.
+Ajout de tests unitaires pour les fichiers de seeds ( qui permettent de g&eacute;n&eacute;rer des fausses donn&eacute;es : utilisateurs, v&eacute;los, historiques, carte de cr&eacute;dits) et pour la page d'accueil de bienvenue de l'abonn&eacute;.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">09/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Modification du fichier des langues et ajout de fichiers tests</div>
+<div class="notes">
+<pre width="40">Modification du fichier de langue(fr) pour que les messages d'erreurs en anglais 
+aient des correspondance en fran&ccedil;ais</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">10/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">10/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Cr&eacute;ation de la commande d'installation via Artisan</div>
+<div class="notes">
+<pre width="40">Cr&eacute;ation du fichier permettant d'installer le projet en une ligne de commande. </pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Creation de la sauvegarde de la base de donn&eacute;es</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Cr&eacute;ation du fichier .pgpass dans le repertoire home de root</div>
+<div class="notes">
+<pre width="40">Le fichier .pgpass sert &agrave; indiquer certaines informations confidentielles comme le mot de passe par exemple lors de la connexion &agrave; la base de donn&eacute;es. Ensuite on donne les droits de lecture et d'&eacute;criture uniquement &agrave; l'utilisateur root</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Cr&eacute;ation du script de sauvegarde et ajout dans la crontab</div>
+<div class="notes">
+<pre width="40">La crontab est la table des t&acirc;ches. Elle permet de dire quelle t&acirc;che sera ex&eacute;cut&eacute;e &agrave; quel moment.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout de relations dans les fichiers (Model) de User et CreditCard</div>
+<div class="notes">
+<pre width="40">On associe dans le fichier (model) User une carte de cr&eacute;dit. On associe dans le fichier (model) CreditCard l'utilisateur qui poss&egrave;de la carte.
+</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout de tests</div>
+<div class="notes">
+<pre width="40">Ajout des fonctions qui permettent de tester la fonctions index, store, update du fichier app\Http\Controllers\ProfileController.
+
+Ajout des fonctions qui permettent de tester les fonctions index, subscription, unsubscribe du fichier app\Http\Controllers\HomeController
+
+Test de la fonction update du fichier app/Http/Controllers/ProfileController.php</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Gestion de la carte de cr&eacute;dit</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Voir les informations concernant la carte de cr&eacute;dit</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Modifier les informations concernant la carte de cr&eacute;dit</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Gestion du solde</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/04/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Voir son solde</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Cr&eacute;ation d'un compte PayPal Sandbox</div>
+<div class="notes">
+<pre width="40">Cr&eacute;ation du compte de test pour les transactions paypal
+</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">21/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">21/03/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Cr&eacute;diter son compte</div>
+<div class="notes">
+<pre width="40">Ici on a impl&eacute;ment&eacute; la fonctionnalit&eacute; permettant &agrave; un abonn&eacute; de cr&eacute;diter son compte avec une carte bancaire via PayPal</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/04/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/04/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout de tests</div>
+<div class="notes">
+<pre width="40">Ajout des tests d'int&eacute;gration pour les fonctionnalit&eacute;s de connexion, d'inscription, de d&eacute;sabonnement, de cr&eacute;dit du compte et d'affichage de cr&eacute;dit.</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/04/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/04/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout de tests</div>
+<div class="notes">
+<pre width="40">Ajout des tests fonctionnels concernant les fonctionnalit&eacute; de mise &agrave; jour de la carte bancaire, d'affichage du solde, de gestion du solde, de cr&eacute;dit de son compte pour le fichier CreditCardControllerTest.php
+
+Ajout des tests fonctionnels concernant la fonctionnalit&eacute; de cr&eacute;dit du compte pour le fichier PayPalControllerTest.php
+
+Ajout de tests fonctionnels concernant la focntionnalit&eacute; de mise &agrave; jour des informations personnelles pour le fichier ProfileControllerTest.php</pre>
+</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/04/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/04/16</div>
+</div>
+</td><td valign="top" class="cell">Steward Ouadi</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Gestion de l'historique</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">02/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">02/03/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">S'authentifier admin</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/02/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Ajout des fichier de tests</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/03/16</div>
+</div>
+</td><td valign="top" class="cell">Sofiane Lassouani</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Installation NodeJS et Ionic</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">04/02/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">05/02/16</div>
+</div>
+</td><td valign="top" class="cell">Romain Camberbet, Laala Djelouah</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Documentation sur l'API Backand</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">25/03/16</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/03/16</div>
+</div>
+</td><td valign="top" class="cell">Romain Camberbet, Laala Djelouah</td>
+</tr>
+</table>
+</center>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td bgcolor="#6d9ec6" width="50%"><font color="#FFFFFF"><b>Ganttproject (2.7.2 Ostrava (build 1954))</b></font></td><td bgcolor="#6d9ec6" width="50%" align="right"><b><a href="http://ganttproject.biz">ganttproject.biz</a></b>
+<br>
+<b>06/04/16 - 18:52:17</b></td>
+</tr>
+</table>
+</body>
+</html>

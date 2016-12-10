@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+use Resources\Views;
+class MapController extends Controller
+{
+    public function create(){
+        //Mapper::map(44.801815,-0.609784);
+        //dd(Mapper::render());
+        //Mapper::render();
+        
+        return view('Map.bikesMap');
+        //return view('cornford.googlmapper.map', ['id' => 5]);
+    }
+    public function create2(){
+        //Mapper::map(44.801815,-0.609784);
+        //dd(Mapper::render());
+        //Mapper::render();
+        
+        return view('Map.bikesMap');
+        //return view('cornford.googlmapper.map', ['id' => 5]);
+    }
+}

@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class DeleteUserTest extends TestCase {
+
+    use DatabaseTransactions;
+
+    public function Delete_User_Test()
+    {      $this->visit('/panel/login')
+        ->type('admin@change.me', 'email')
+        ->type('12345', 'password')
+        ->press('Login')
+        ->see('Dashboard')
+        ->click('Users')
+        ->see('/public/panel/users/all')
+        ->click('show')
+        ->see('User information');
+
+
+
+
+
+
+
+    }
+}

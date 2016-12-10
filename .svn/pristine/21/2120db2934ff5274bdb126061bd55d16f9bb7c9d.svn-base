@@ -1,0 +1,146 @@
+<?php $__env->startSection('page-wrapper'); ?>
+
+
+        
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <h1 class="page-header">  <strong> <?php echo e(\Lang::get('panel::fields.dashboard')); ?> </strong> </h1>
+
+                    <div class="icon-bg ic-layers"></div>
+                </div>
+                            
+            </div>
+            <!-- /.row -->
+            <div class="row box-holder">
+                
+                <?php if(is_array(\Serverfireteam\Panel\Link::returnUrls())): ?>
+                    <?php foreach(Serverfireteam\Panel\libs\dashboard::getItems() as $box): ?>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel ">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-7 title">
+                                      <strong> <?php echo e($box['title']); ?> </strong>
+                                    </div>
+                                    <div class="col-xs-4 text-right">
+                                        <div class="huge"><?php echo e($box['count']); ?></div>
+                                        <div></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="panel-footer">
+
+                                     <a href='<?php echo e($box['showListUrl']); ?>' class="pull-left"><?php echo e(\Lang::get('panel::fields.showList')); ?> <i class="icon ic-chevron-right"></i></a>
+
+                                          <!--si c'est autre chose j'afiche pas le bouton ajouter !-->
+                                    <?php if(($box['title'] == 'Links')||($box['title'] == 'Bikes') ): ?>
+
+                                       <div class="pull-right"> <a class="add " href="<?php echo e($box['addUrl']); ?>"><?php echo e(\Lang::get('panel::fields.Add')); ?>  </a></div>
+
+                                    <?php endif; ?>
+                                    <div class="clearfix"></div>
+                                </div>
+                        </div>
+
+                    </div>
+
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+
+            </div>
+            <div class="row hide update">
+                <div class="alert alert-warning" role="alert">
+                    <a href="http://laravelpanel.com/docs/master/update" class="alert-link"></a>
+                </div>
+            </div>
+
+            <!--    le carrée de la carte      !-->
+    <div class="panel-body">
+            <div class="col-lg-12 col-md-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-map-marker red "></i><strong>Velos Disponible</strong>
+
+                        <div class="panel-actions">
+
+                        </div>
+
+                    </div>
+                    <div class="panel-body-map">
+                        <div id="map" style="height:380px;"></div>
+
+                                        <!--      carte   !-->
+                        <script>
+
+                            function initMap() {
+                                var myLatLng = {lat: 44.808903, lng: -0.591446};
+
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 17,
+                                    center: myLatLng
+                                });
+
+                                setMarkers(map);
+
+                            }
+
+                            var markers = [
+                                ['bike-1', 44.809342, -0.592120, 4],
+                                ['bike-2', 44.809403, -0.592123, 5],
+                                ['bike-3', 44.808837, -0.592350, 3],
+                                ['bike-4', 44.808823, -0.592373, 2],
+                                ['bike-5', 44.808808, -0.592388, 1]
+                            ];
+
+                            function setMarkers(map) {
+                                for (var i = 0; i < markers.length; i++) {
+                                    var marker = markers[i];
+                                    var marker = new google.maps.Marker({
+                                        position: {lat: marker[1], lng: marker[2]},
+                                        map: map
+                                    });
+                                }
+                            }
+
+
+                        </script>
+                        <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC60BlnlCiuOYoq-TdDVubm4XPWGRKWCZs&signed_in=true&callback=initMap"></script>
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+            </br>
+            </br>
+
+<script>
+    $(function(){
+        var color = ['primary','green','orange','red','purple','green2','blue2','yellow'];
+        var pointer = 0;
+        $('.panel').each(function(){
+            if(pointer > color.length) pointer = 0;
+            $(this).addClass('panel-'+color[pointer]);
+            $(this).find('.pull-right .add').addClass('panel-'+color[pointer]);
+            pointer++;
+        })
+        // check for update of laravelpanel 
+        $.getJSON( "http://api.laravelpanel.com/checkupdate/<?php echo e($version); ?>", function( data ) {
+          if(data.needUpdate){
+            $(".update a").text(data.text);
+            $(".update").removeClass('hide');
+          }
+        })
+        
+    })
+</script>
+<?php $__env->stopSection(); ?>            
+
+<?php echo $__env->make('panelViews::mainTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

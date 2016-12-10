@@ -1,0 +1,58 @@
+<ion-view view-title="Inscription">
+    <ion-content class="padding has-header">
+        <div class="bar bar-subheader">
+            <form ng-submit="vm.signup()">
+                <div class="list">
+                    <div class="row">
+                        <div class="col">
+                            <label class="item item-input">
+                                <input id="email" name="email" type="email" placeholder="Votre email"
+                                       ng-model="vm.email">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="item item-input">
+                                <input id="firstname" name="firstname" type="text" placeholder="Votre nom"
+                                       ng-model="vm.firstName">
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="item item-input">
+                                <input id="username" name="lastname" type="text" placeholder="Votre prénom"
+                                       ng-model="vm.lastName">
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+
+                            <label class="item item-input">
+                                <input id="password" name="password" type="password" placeholder="Votre mot de passe"
+                                       ng-model="vm.password">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+
+                            <label class="item item-input">
+                                <input id="again" name="again" type="password" placeholder="confirmer votre mot de passe"
+                                       ng-model="vm.again">
+                            </label>
+                        </div>
+                    </div>
+                    <h4 style="color:red;" ng-bind="vm.errorMessage"></h4>
+
+                    <div class="">
+                        <button class="button button-block button-stable" type="submit">
+                            S'enregistrer 
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

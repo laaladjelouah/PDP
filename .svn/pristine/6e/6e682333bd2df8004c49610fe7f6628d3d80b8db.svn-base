@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class HomeControllerTest extends TestCase {
+
+    use WithoutMiddleware;
+
+    /*  public function __construct() {
+      parent::setUp();
+      $this->createApplication();
+      //$this->artisanMigrateRefresh();
+      } */
+
+    public function testViewProfile() {
+        //parent::setUp();
+        $user = factory(App\User::class)->create();
+        $this->actingAs($user, 'Roger');
+        $this->withoutMiddleware();
+        $this->get('home')->click('#espace-personnel')->seePageIs('profile');
+        //return $response = $this->call('GET', 'home')->click('#espace-personnel')->seePageIs('profile');
+        //$this->assertTrue(true);
+    }
+
+}

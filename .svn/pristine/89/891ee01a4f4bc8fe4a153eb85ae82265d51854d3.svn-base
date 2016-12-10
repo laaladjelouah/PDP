@@ -1,0 +1,40 @@
+<?php 
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class users extends Model {
+
+    protected $table = 'users';
+
+    static $cache = [];
+
+    public static function allCached($forceRefresh = false)
+    {
+        if (!isset(self::$cache['all']) || $forceRefresh) {
+            self::$cache['all'] = usres::all();
+        }
+
+        return self::$cache['all'];
+    }
+
+
+    public static function getMainUrls($forceRefresh = false){
+
+        if (!isset(self::$cache['main_urls']) || $forceRefresh) {
+            $configs = Link::where('blacklisted', '=', 'OUI')->get(['id']);
+            self::$cache['blacklisted'] = $configs->pluck('id')->toArray();
+        }
+
+        return self::$cache['blacklisted'];
+    }
+
+    public function getAndSave($lastname, $firstname){
+        $this->name = $lastname;
+        $this->firstname = $firstname;
+        $this->save();
+    }
+
+
+}

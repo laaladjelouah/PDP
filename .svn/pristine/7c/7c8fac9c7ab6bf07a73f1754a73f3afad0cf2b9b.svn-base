@@ -1,0 +1,46 @@
+This file is part of the automatic bike rental system.
+
+Copyright (C) 2015/2016 ouadi steward,lassouani sofiane 
+
+
+                              automatic bike rental system
+                              =============================
+
+
+
+DESCRIPTION :
+_____________
+This website is developed as part of a programming project "PDP" 
+in Bordeaux University , whose client is Mathieu Raffinot.
+     1-the system has a two part abonée part or visitor permit to:
+ - to log in,
+ - update the profile,
+ - register,
+ - see disponile bikes,
+ - see the system operating mode
+
+     2-another part of administration permit to:
+ - to log in,
+ - update the profile,
+ - see the list of bikes
+ - add/remove/modify a bike,
+ - remove/blacklist a user,
+ - see the user list,
+ - see the history of each bike and user
+
+for more information visit : http://dept-info.labri.u-bordeaux.fr/~narbel/PdP/Subjects15-16/pdp_raffinot3.html
+
+
+SUPPORTED OPERATING SYSTEMS :
+-----------------------------
+
+The automatic bike rental system works on :
+ 
+ - Windows 8/10
+ 
+
+INSTALLING :
+____________
+
+Please read the INSTALL file.
+

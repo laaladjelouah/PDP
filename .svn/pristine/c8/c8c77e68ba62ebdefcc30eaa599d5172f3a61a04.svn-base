@@ -1,0 +1,30 @@
+<?php 
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class History extends Model {
+
+    protected $table = 'History';
+    protected $table1= 'users';
+
+    static $cache = [];
+
+
+
+    public static function allCached($forceRefresh = false)
+    {
+        if (!isset(self::$cache['all']) || $forceRefresh) {
+            self::$cache['all'] = History::all();
+
+
+        }
+
+
+        return self::$cache['all'];
+
+    }
+
+}
+

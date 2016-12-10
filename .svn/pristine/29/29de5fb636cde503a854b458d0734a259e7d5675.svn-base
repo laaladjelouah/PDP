@@ -1,0 +1,49 @@
+<?php
+
+namespace App;
+
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
+
+class ProfileModel extends Model {
+
+    public static function store(Array $request) {
+
+        // Variable to know if information changed
+        $modified = false;
+        //dd(\Auth::id());
+        $user = User::find(\Auth::id());
+
+        if (strcmp($user->lastname, $request['lastname']) !== 0) {
+            $user->lastname = $request['lastname'];
+            $modified = true;
+        }
+        if (strcmp($user->firstname, $request['firstname']) !== 0) {
+            $user->firstname = $request['firstname'];
+            $modified = true;
+        }
+        if (strcmp($user->birthdate, $request['birthdate']) !== 0) {
+            $user->birthdate = $request['birthdate'];
+            $modified = true;
+        }
+        if (strcmp($user->email, $request['email']) !== 0) {
+            $user->email = $request['email'];
+            $modified = true;
+        }
+        if (strcmp($user->password, $request['password']) !== 0) {
+            // Store the hashed password
+            $user->password = Hash::make($request['password']);
+            $modified = true;
+        }
+        if (strcmp($user->phoneNumber, $request['phoneNumber']) !== 0) {
+            $user->phoneNumber = $request['phoneNumber'];
+            $modified = true;
+        }
+        $user->save();
+        //dd($request['lastname']);
+        //dd('hey !!!');
+        return $modified;
+    }
+
+}

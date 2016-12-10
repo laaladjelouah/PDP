@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/wamp64/www/pdp/app/Http/Controllers/HomeController.php</file>
+            <file>file:/D:/wamp64/www/pdp/app/Http/Controllers/Auth/AuthController.php</file>
+            <file>file:/D:/wamp64/www/pdp/tests/HomeControllerTest.php</file>
+            <file>file:/D:/wamp64/www/pdp/tests/ExampleTest.php</file>
+            <file>file:/D:/wamp64/www/pdp/app/Http/Controllers/ProfileController.php</file>
+            <file>file:/D:/wamp64/www/pdp/resources/views/welcome.blade.php</file>
+            <file>file:/D:/wamp64/www/pdp/app/Http/routes.php</file>
+            <file>file:/D:/wamp64/www/pdp/tests/app/Http/ProfileControllerTest.php</file>
+            <file>file:/D:/wamp64/www/pdp/app/ProfileModel.php</file>
+            <file>file:/D:/wamp64/www/pdp/tests/TestCase.php</file>
+            <file>file:/D:/wamp64/www/pdp/app/CreditCardModel.php</file>
+            <file>file:/D:/wamp64/www/pdp/resources/views/home.blade.php</file>
+            <file>file:/D:/wamp64/www/pdp/.env</file>
+            <file>file:/D:/wamp64/www/pdp/app/Http/Controllers/CreditCardController.php</file>
+            <file>file:/D:/wamp64/www/pdp/phpunit.xml</file>
+            <file>file:/D:/wamp64/www/pdp/_ide_helper.php</file>
+            <file>file:/D:/wamp64/www/pdp/config/app.php</file>
+            <file>file:/D:/wamp64/www/pdp/resources/views/auth/register.blade.php</file>
+            <file>file:/D:/wamp64/www/pdp/bootstrap/app.php</file>
+        </group>
+    </open-files>
+</project-private>

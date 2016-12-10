@@ -1,0 +1,15 @@
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=<?php echo $options['version']; ?>&region=<?php echo $options['region']; ?>&language=<?php echo $options['language']; ?>&key=<?php echo $options['key']; ?>&signed_in=<?php echo $options['user'] ? 'true' : 'false'; ?>&libraries=places"></script>
+
+<?php if($options['cluster']): ?>
+
+	<script type="text/javascript" src="//googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
+
+<?php endif; ?>
+
+<?php foreach($items as $id => $item): ?>
+
+	<?php echo $item->render($id, $view); ?>
+
+
+<?php endforeach; ?>
+

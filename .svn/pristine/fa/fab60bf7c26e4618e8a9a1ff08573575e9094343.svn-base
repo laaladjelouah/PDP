@@ -1,0 +1,49 @@
+@extends('layouts.app')
+@section('title')
+Carte
+@endsection
+<link rel="stylesheet" href="{{ URL::asset('css/Map.css') }}">
+@section('content')
+<h1>Carte des velos</h1>
+
+<div id="map"></div>
+<script>
+
+    function initMap() {
+        var myLatLng = {lat: 44.808903, lng: -0.591446};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: myLatLng
+        });
+
+        setMarkers(map);
+
+    }
+
+    var markers = [
+        ['bike-1', 44.809342, -0.592120, 4],
+        ['bike-2', 44.809403, -0.592123, 5],
+        ['bike-3', 44.808837, -0.592350, 3],
+        ['bike-4', 44.808823, -0.592373, 2],
+        ['bike-5', 44.808808, -0.592388, 1]
+    ];
+
+    function setMarkers(map) {
+        for (var i = 0; i < markers.length; i++) {
+            var marker = markers[i];
+            var marker = new google.maps.Marker({
+                position: {lat: marker[1], lng: marker[2]},
+                map: map
+            });
+        }
+    }
+
+
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC60BlnlCiuOYoq-TdDVubm4XPWGRKWCZs&signed_in=true&callback=initMap"></script>
+
+
+
+@endsection

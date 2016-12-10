@@ -1,0 +1,124 @@
+This file list the files that we added and modified
+
+Added files
+// Controllers
+App\Http\Controllers\Auth\AuthController.php
+App\Http\Controllers\Auth\PasswordController.php
+App\Http\Controllers\BikeController.php
+App\Http\Controllers\BikeLockController.php
+App\Http\Controllers\CreditCardController.php
+App\Http\Controllers\HistoryController.php
+App\Http\Controllers\HomeController.php
+App\Http\Controllers\PaymentHistoryController.php
+App\Http\Controllers\PaypalController.php
+App\Http\Controllers\ProfileController.php
+App\Http\Controllers\SessionController.php
+App\Http\Controllers\usersController.php
+
+// Routes
+App\Http\routes.php
+
+// Models
+App\Bike.php
+App\User.php
+App\BikeLock.php
+App\CreditCardModel.php
+App\History.php
+App\PaymenHistoryModel.php
+App\ProfileModel.php
+App\users.php
+
+//Config
+config\panel.php (with panel package)
+
+// Commands
+App\Console\Commands\InstallPdpPretVelos.php
+
+// Database Backup
+backups/save_db.sh
+
+// Database migrations
+database\migrations\create_users_table.php
+database\migrations\create_password_resets_table.php
+database\migrations\create_session_table.php
+database\migrations\create_bike_table.php
+database\migrations\create_history_table.php
+database\migrations\create_credit_card_table.php
+database\migrations\create_bike_lock_table.php
+database\migrations\create_admin_table.php
+database\migrations\create_payment_history_table.php
+
+vendor\serverfireteam\src\database\migrations\create_admins_table.php
+vendor\serverfireteam\src\database\migrations\create_password_reminders.php
+vendor\serverfireteam\src\database\migrations\create_url_table.php
+vendor\serverfireteam\src\database\migrations\edit_url_table.php
+
+// Database seeds
+database\seeds\UsersTableSeeder.php
+
+// Language
+ressources\lang\fr\auth.php
+ressources\lang\fr\pagination.php
+ressources\lang\fr\passwords.php
+ressources\lang\fr\validation.php
+
+// Views 
+ressources\views\auth\email\password.blade.php
+ressources\views\auth\passwords\email.blade.php
+ressources\views\auth\passwords\reset.blade.php
+ressources\views\auth\login.blade.php
+ressources\views\auth\register.blade.php
+
+ressources\views\credit-card\creditCard.blade.php
+ressources\views\credit-card\modifyCreditCard.blade.php
+
+ressources\views\profile \modifyProfile.blade.php
+ressources\views\profile \profile.blade.php
+
+ressources\views\subscription\subscription.blade.php
+
+ressources\views\userBalance\history.blade.php
+ressources\views\userBalance\inscreaseBalance.blade.php
+ressources\views\userBalance\userBalance.blade.php
+ressources\views\userBalance\userBalanceManagement.blade.php
+
+ressources\views\userBalance\home.blade.php
+ressources\views\userBalance\welcome.blade.php
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ressources\views\vendor\panelViews\login.blade.php
+ressources\views\vendor\panelViews\all.blade.php
+ressources\views\vendor\panelViews\dashborard.blade.php
+ressources\views\vendor\panelViews\edit.blade.php
+ressources\views\vendor\panelViews\editProfile.blade.php
+ressources\views\vendor\panelViews\mainTemplate.blade.php
+ressources\views\vendor\panelViews\master.blade.php
+ressources\views\vendor\panelViews\passwordChange.blade.php
+ressources\views\vendor\panelViews\passwordReminder.blade.php
+ressources\views\vendor\panelViews\resetPassword.blade.php
+ressources\views\vendor\panelViews\passwordReset.blade.php
+
+// CSS
+Every files in public\css folder
+// Images
+Every files in public\img folder and public\uploads folder
+
+Modified Files
+
+// Config
+config\app.php
+config\paypal_payment.php (with anouar package for paypal)
+
+
+// Commands
+App\Console\Kernel.php
+
+// Factory
+database\factories\ModelFactory.php
+
+//Database seeds
+database\seeds\DatabaseSeeder.php
+
+// Views 
+ressources\views\layouts\app.blade.php

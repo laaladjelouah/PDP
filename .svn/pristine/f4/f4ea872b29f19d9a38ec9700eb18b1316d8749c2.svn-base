@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateHistoryTable extends Migration {
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up() {
+        Schema::create('History', function (Blueprint $table) {
+            // $table->engine = 'InnoDB';
+            $table->increments('history_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('bike_id')->unsigned();
+            $table->foreign('bike_id')->references('bike_id')->on('Bike');
+            $table->dateTime('start_borrowing_date');
+            $table->dateTime('end_borrowing_date');
+            $table->boolean('active');
+            $table->string('picture_before');
+            $table->string('picture_after');
+            $table->string('repair_cost');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down() {
+        Schema::drop('History');
+    }
+
+}

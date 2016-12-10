@@ -1,0 +1,56 @@
+<?php $__env->startSection('page-wrapper'); ?>
+
+
+<?php echo $filter; ?>
+
+
+<br><br>
+<a title="exporter sous format EXCEL" href="<?php echo url('panel/'.$current_entity.'/export/excel'); ?>" class="btn btn-info"><?php echo \Lang::get('panel::fields.exportAsExcel'); ?></a>
+
+
+<!-- j'afiche le bouton importer uniquement si c'est users ou bike !-->
+<?php if(($current_entity=='users' )||($current_entity=='Bike')): ?>
+<button class="btn btn-warning" data-toggle="modal" data-target="#import_modal"><?php echo \Lang::get('panel::fields.importData'); ?></button>
+<?php endif; ?>
+<!-- Modal -->
+<div class="modal fade" id="import_modal" tabindex="-1" role="dialog" aria-labelledby="import_modal_label" aria-hidden="true">
+	<div class="modal-dialog">
+	        <div class="modal-content">
+	                <div class="modal-header">
+	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="import_modal_label"><?php echo \Lang::get('panel::fields.importData'); ?></h4>
+                        </div>
+			<form method="post" action="<?php echo url('panel/'.$current_entity.'/import'); ?>" enctype="multipart/form-data">
+				<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+	                        <div class="modal-body">
+					<div><input type="file" name="import_file" /></div>
+					<br />
+					<div>
+						<input type="radio" name="status" id="status_1" value="1" checked="checked" />&nbsp;
+						<label for="status_1"><?php echo \Lang::get('panel::fields.deletePreviousData'); ?></label><br />
+						<input type="radio" name="status" id="status_2" value="2" />&nbsp;
+						<label for="status_2"><?php echo \Lang::get('panel::fields.keepOverwriteData'); ?></label><br />
+						<input type="radio" name="status" id="status_3" value="3" />&nbsp;
+						<label for="status_3"><?php echo \Lang::get('panel::fields.keepNotOverwriteData'); ?></label><br />
+					</div>
+                                </div>
+                                <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo \Lang::get('panel::fields.close'); ?></button>
+                                            <button type="submit" class="btn btn-primary"><?php echo \Lang::get('panel::fields.importData'); ?></button>
+                                </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<?php if($import_message): ?>
+	<div>&nbsp;</div>
+	<div class="alert alert-success"><?php echo e($import_message); ?></div>
+<?php endif; ?>
+
+<?php echo $grid; ?>
+
+
+<?php $__env->stopSection(); ?>   
+
+<?php echo $__env->make('panelViews::mainTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

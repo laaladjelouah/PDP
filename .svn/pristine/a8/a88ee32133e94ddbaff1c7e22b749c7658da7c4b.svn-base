@@ -1,0 +1,72 @@
+<?php 
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use \Serverfireteam\Panel\CrudController;
+
+use Illuminate\Http\Request;
+
+class usersController extends CrudController{
+
+    public function all($entity){
+        parent::all($entity);
+
+		/** Simple code of  filter and grid part , List of all fields here : http://laravelpanel.com/docs/master/crud-fields */
+
+		//$this->filter->label('Users');
+
+		$this->filter = \DataFilter::source(new users());
+		$this->filter->add('lastname','Name','text')->options(users::lists("lastname","id")->all()); //
+		//$this->filter->add('name', 'Name', 'text');
+		$this->filter->add('email', 'Email','text');
+		$this->filter->submit('search');
+		$this->filter->reset('reset');
+		$this->filter->build();
+
+		$this->grid = \DataGrid::source($this->filter);
+		$this->grid->add('lastname', 'Name',true);
+		$this->grid->orderBy('lastname','desc'); // ordre descendant lastname
+		$this->grid->add('firstname', 'Firstname',true);
+		$this->grid->add('phoneNumber', 'Mobile');
+		$this->grid->add('email', 'Email');
+		$this->grid->add('created_at', 'Member sinse',true);
+
+		$this->grid->add('blacklisted', 'Blacklisted',true);
+		$this->grid->add('credit', 'Credit',true);
+
+		$this->addStylesToGrid1();
+		$this->grid->paginate(10); //pagination 10 entrée par page
+
+
+		return $this->returnView();
+    }
+    
+    public function  edit($entity){
+        
+        parent::edit($entity);
+
+		$this->edit = \DataEdit::source(new users());
+
+		$this->edit->label('Users information');
+		// $this->edit->add('name', 'Name', 'autocomplete')->search(array('name'));
+		$this->edit->add('lastname', 'Name  :','text');
+		$this->edit->add('firstname', 'Firstname  :', 'text');
+		$this->edit->add('email', 'Email  :','text');
+		$this->edit->add('phoneNumber', 'Mobile  :','text');
+		$this->edit->add('credit', 'Crédit  :','text');
+
+		//$this->edit->add('blackliste', 'Blaklite','select')->options('oui','non');
+		//$this->edit->checkbox('blackliste', 'blackliste'); // field name, label (short syntax)
+
+		//$this->edit->add('blackliste', 'Blaklite', 'text');
+
+		$this->edit->add('blacklisted', 'Blackliste  :', 'radiogroup')->option('OUI', 'OUI')->option('NON', 'NON');
+		$this->edit->add('created_at', 'Member sinse  :','text');
+
+		return $this->returnEditView();
+    }
+
+
+}

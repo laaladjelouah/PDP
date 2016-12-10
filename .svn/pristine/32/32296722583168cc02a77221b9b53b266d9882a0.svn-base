@@ -1,0 +1,451 @@
+\documentclass[12pt]{article}
+
+
+
+\usepackage[utf8]{inputenc}   % LaTeX, comprends les accents !
+\usepackage[T1]{fontenc}      % Police contenant les caractÃšres franÃ§ais
+\usepackage[francais]{babel}  % Placez ici une liste de langues, la
+                              % derniÃšre Ã©tant la langue principale
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[final]{pdfpages} 
+
+\usepackage[a4paper]{geometry}% RÃ©duire les marges
+% \pagestyle{headings}        % Pour mettre des entÃªtes avec les titres
+                              % des sections en haut de page
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+\date{}                      
+
+\sloppy                       % Ne pas faire dÃ©border les lignes dans la marge
+ 
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+
+    % Upper part of the page. The '~' is needed because \\
+    % only works if a paragraph has started.
+   
+    
+    
+    \begin{figure}[!ht]
+    \center
+    \includegraphics[scale=0.5]{logoB.png}
+   
+\end{figure}
+
+    \textsc{\LARGE Université de Bordeaux}\\[2cm]
+
+    \textsc{\Large Cahier des besoins}\\[1.5cm]
+
+    % Title
+    \HRule \\[0.4cm]
+    { \huge \bfseries Système automatique de prêt de vélos\\[0.4cm] }
+
+    \HRule \\[2cm]
+    
+    
+
+    % Author and supervisor
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+         \textsc{Fait par :}\\
+         CAMBERBET Romain\\
+         OUADI Steward\\
+         DJELOUAH Laala\\
+        LASSOUANI Sofiane\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+        \emph{Client :} M. \textsc{Mathieu Raffinot}\\
+        \emph{Chargé de TD:} M.\textsc{Adrien Boussicault}\\
+        
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    % Bottom of the page
+  %  {\large 1\ier{} Janvier 2016  19 Fevrier 2016}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
+
+
+
+\tableofcontents
+\listoffigures
+
+\newpage
+
+                   % Faire un titre utilisant les donnÃ©es
+                              % passÃ©es Ã  \title, \author et \date
+% \part{Titre}                % Commencer une partie...
+
+\section{Description du projet}               % Commencer une section, etc.
+
+Notre projet consiste en la création et la validation expérimentale d'un nouveau concept de prêt de vélos : un système de prêt quasi autonome basé sur un QR-code et un cadenas de type \textit{skylock}. 
+\newline L'innovation dans ce système est le fait qu'on permet d'accrocher les vélos en libre accès et non pas dans des stations dédiées, ce qui facilite l'utilisation. En effet ils seront éparpillés un peu partout et repérables par les abonnés grâce à un système de géolocalisation.\\
+\newline Nous distinguons trois acteurs principaux  qui vont utiliser le système : les visiteurs, les abonnés et l'administrateur.\\
+\newline Tout d'abord nous avons les visiteurs qui auront la possibilité de visualiser la carte de tous les vélos disponibles sur une carte, de s'inscrire et ainsi devenir abonnés ou encore avoir accès à certaines informations (par exemple le mode de fonctionnement de notre système de prêt de vélo).\\
+\newline Ensuite, nous avons les abonnés. C'est à dire les utilisateurs qui se sont inscrits et qui ont un compte. Ceux-ci peuvent s'authentifier et ainsi effectuer une recherche des vélos les plus proches et visualiser ces derniers sur une carte de type \textit{openstreetmap}. Tout ceci est possible grâce au système de géolocalisation du mobile de l'abonné, couplé avec le système de géolocalisation des cadenas skylock.\\
+L'abonné aura la possibilité de réserver un vélo, il aura 20 minutes afin d'aller récupérer le vélo. Les 20 minutes écoulées et l'abonné n'ayant toujours pas récupéré le vélo, un montant de Z euros est débité sur le compte de l'abonné.\\
+\newline Pour prendre le vélo, l'utilisateur doit au préalable scanner le QR-code présent sur le vélo afin de désactiver le cadenas (Le système vérifie que le QR-Code est bien valide, trouve à quel vélo ça appartient et si toutes les conditions sont remplies, un signal est envoyer au cadenas pour le déverrouiller). Lorsque le cadenas est désactivé, l'emprunt commence et pendant toute cette période dite d'emprunt, l'utilisateur est responsable du vélo. Au moment de son emprunt, l'utilisateur doit déclarer l'état du vélo (très bon état, bon état, moyennement dégradé, bien dégradé, etc...) et prendre quelques photos de ce dernier. Dans le cas où il y a des dégradations sur le matériel, ces photos serviront à savoir sous la responsabilité de quel abonné l'incident a eu lieu.\\
+\newline Au début, le client a un certain montant dans son compte qui lui servira à payer les emprunts,en fonction du temps d'usage qui varie  selon une courbe quadratique qui augmente au file du temps,un client ne peut pas avoir de solde négatif sous peine de se voir bloqué ou black-listé.\\
+\newline Lorsque l'utilisateur termine sa location, il doit accrocher où il le souhaite le vélo avec son cadenas et prendre rapidement une photo du vélo attaché. Puis, il déclare sur l'application qu'il a terminé sa location, c'est à cet instant que l'abonné n'est plus responsable du vélo. Un SMS est alors envoyé à l'abonné lui confirmant la 
+fin de responsabilité du vélo.\\
+\newline Enfin, nous avons un administrateur, ce dernier pourra se connecter à un autre site internet (pour des questions de sécurité) qui lui permettra de gérer le système. Notamment, il pourra bannir des utilisateurs, gérer les vélos (Ajout, Modification, Suppression) ou encore consulter les différents historiques et statistiques qui concernent le système.
+
+Une assurance est obligatoirement souscrite par tous les utilisateurs, celle ci est recalculée chaque mois pour chaque abonné en fonction de son profil, qui est determiné pour chaque utilisateur selon plusieurs contexte parmis eux le nombre de casse.
+ \\
+\newline{\large \textbf{Pour qui?}}
+\newline Notre système de prêt de vélos s'adresse à toute personne souhaitant utiliser un vélo en libre accès pour des deplacements qui depondent de l'utilisateur et pas de la station la plus proche. 
+\\
+\newline{\large \textbf{Nouveauté?}}
+\newline La nouveauté dans ce projet est le fait que les vélos sont géolocalisés sur une carte et sont éparpillés. L'utilisateur qui empruntera un vélo pourra donc le déposer ou ça l'arrange(en bas de chez lui, à coté de son lieu de travail, etc...), contrairement aux systèmes de prêt déjà existants et qui obligent les utilisateurs à déposer les vélos dans des stations dédiées à cet effet, des stations qui peuvent être très éloignées,ce qui est pas trés pratique. 
+
+
+
+\section{Le diagramme des cas d'utilisation}
+
+\subsection{Définition  [1]}
+Le formalisme des cas d'utilisation sert a representer le comportement du système d'un point de vue abstrait en insistant sur les interactions avec son environnement. il est basé sur deux concept majeurs l'acteur et les cas d'utilisation (ou actions). 
+\begin{itemize}
+\item\textbf{ Un acteur} represente un ensemble cohérent de rôles joués par les utilisateurs des cas d'utilisation.un acteur peut representer une persone mais aussi un systéme matériel,une application logiciel.il est ainsi possible de classer les acteurs par stréotype :persone,matériel,logiciel,etc.
+\item \textbf{Un cas d'utilisation (use case) }décrit ce que fait le systéme en réponce à un évenement provenant d'un acteur.La notion recouvre plusieurs aspects.
+un use case décrit un ensemble d'actions et représente une exigence fonctionnelle du systéme.
+un use case décrit un ensemble d'interaction entre le systéme et les acteurs. 
+\end{itemize}
+
+
+
+La relation \textbf{"include"} signifie qu'un cas d'utilisation est incorporé dans un autre a un point d'incertion bien déterminé.\newline
+Exemple : Pour réserver un vélo "Réserver vélo", il faut au préalable consulter la carte des vélos disponibles "Consulter carte".
+\newline
+\newline
+
+La base de données qui contient les données de l'application et du site web est stockée sur le serveur. Par conséquent, tous les cas d'utilisation sont implicitement reliés au serveur. De plus, le site web en lui même est sur le serveur et tous les calcus seront effectués sur ce dernier.
+
+
+Chaque cadenas communique avec le serveur, le serveur peut donc débloquer, bloquer et obtenir la géolocalisation de chaque cadenas.
+
+
+Par souci de lisibilité, dans le diagramme ci-dessous, les acteurs secondaires comme le cadenas, le serveur, la base de données, le service de paiement ne seront pas représentés. 
+Par contre certains de ces acteurs seront visibles sur des diagrammes de cas d'utilisation plus approfondis ou sur des diagrammes de séquences.
+
+
+
+
+\begin{figure}[!ht]
+    \center
+    \includegraphics[scale=0.5]{useCase.png} 
+    \caption{Diagramme des cas d'utilisation}
+\end{figure}
+
+
+
+
+
+ 
+\newpage
+
+\section{Description des besoins}
+Les besoins fonctionnels et non-fonctionnels qui seront présentés ci-dessous seront divisés par acteur : visiteur, abonné et administrateur(admin).
+\subsection{Besoins non-fonctionnels}
+
+\subsubsection{Abonné} 
+
+
+\subsubsection {Prendre un vélo}
+
+Contrainte légale : l'application ne doit contenir que des photos qui appartiennent au parc de vélo du client.\newline
+
+\textbf{  Test:} \newline
+Un test evident est de realiser toutes les actions nécessaires a cette fonctionalité a savoir scanner le QR-code du vélo, prendre une ou plusieurs photos selon l'état déclaré et essayer de prendre un autre vélo ,la réponse attendue serait le non déblocage du cadenas de ce vélo.
+
+\subsection{Besoins fonctionnels}
+
+
+
+\begin{enumerate}[label=\Alph*)]
+\item\textbf{Visiteur} 
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+\item Inscription
+\newline Le scénario ci-dessous est le même pour linscription dun utilisateur sur lapplication et sur le site internet.
+Après que le visiteur ait demandé la page dinscription, il devra remplir le formulaire puis le valider. Une fois la confirmation faite et dans le cas où les informations saisies sont incorrectes ou manquantes, le système renvoie le formulaire en précisant les champs concernés par les erreurs. Dans le cas contraire, un message de succès sera affiché et l'utilisateur doit finaliser son inscription en payant un certain montant X, ce montant est donc prélevé du compte de l'utilisateur et les informations du visiteur seront enregistrées dans la base de données du site.
+
+\textbf{  Test:} \newline
+
+le test de cette fonctionalité va se centrer sur le formulaire, en essayant de le remplire avec de fausses informations ou en insérant des erreurs, par exemple insérer à la place du nom des chiffres ou même valider un formulaire vide, ainsi la réponse attendue sera un message d'erreur et l'utilisateur devra modifier les informations érronnées et/ou compléter le formulaire.
+
+\subsubsection{  Diagramme de séquence [2]} 
+Un diagramme de séquance établit une vision temporelle des échanges entre objets.Les objets sont les colones du diagramme.un envoi de message(évènement) est représenté par une flèche entre deux objets.Une séquence est une suite de messages.Un envoi de messages induit une activité chez l'objet récepteur. 
+
+
+
+\underline{ \textbf{Scenario nominal}} \newline
+
+
+
+\newpage
+\begin{figure}[!ht]
+    \center
+    \includegraphics[scale=0.5]{inscription.png}  
+    \caption{Diagramme de séquence correspondant au use case "s'abonner"}
+\end{figure}
+
+\newpage
+\item Voir pub/info
+
+
+Sur le site internet, le visiteur pourra voir le fonctionnement du système de prêt de vélo.
+Sur lapplication, le visiteur aura uniquement deux actions : se connecter ou sinscrire.
+
+
+\item Consulter la carte
+
+
+Sur le site internet, un visiteur pourra consulter la carte pour voir les vélos disponibles.
+\end{itemize}
+
+\item\textbf{Abonné} 
+
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+\item Consulter la carte
+
+La présentation de la carte sur lespace abonné, est caractérisée par : laffichage des vélos disponibles proches de sa position. Lorsque l'abonné sélectionne un vélo, une pop-up qui contient la dernière photo du vélo où il a été déposé ainsi que son état déclaré par le précédent utilisateur s'ouvre. 
+L'abonné a aussi la possibilité de choisir un rayon de recherche sur la carte.
+
+
+\item Authentification dun abonné
+
+Afin de sauthentifier, le client introduit son nom dutilisateur et son mot de passe dans la page daccueil pour sauthentifier. Il sera directement redirigé à son espace personnel. Au cas où les informations saisies sont incorrectes ou manquantes, le système redemmande la saisie.
+ 
+
+
+
+\newpage
+\begin{figure}[!ht]
+    \center
+    \includegraphics[scale=0.5]{authentification.png}
+    \caption{Diagramme de séquence correspondant au use case "s'authentifier"}
+\end{figure}
+
+
+
+
+\textbf{  Test:} \newline
+
+on pourrais tester de s'authentifier avec des faux identifiants et des faux mots de passe le systéme ne doit en aucun cas nous fournir l'accées a l'aplication c'est la réponce souhaité.
+
+
+
+\item Réserver un vélo
+
+
+Après avoir consulté la carte des vélos disponibles, un abonné pourra réserver un vélo et aura 20 minutes pour aller récupérer le vélo sous peine dune pénalité. \newline
+\textbf{  Test:} \newline
+en resérvant un vélo le systéme doit reagire au bout de 20 min si une suite de prise réel du velo n'est pas survenu un certain montant Z doit être debité .
+
+\underline{ \textbf{Scenario nominal}} 
+
+
+
+\begin{figure}[!ht]
+    \center
+    \includegraphics[scale=0.5]{ReserveVelo.jpg}
+    \caption{Diagramme de séquence correspondant au use case "reserver un vélo"}
+\end{figure}
+
+
+
+
+\item Prendre un vélo
+
+
+Deux cas se présentent soit labonné a réservé le vélo soit il est tout prêt du vélo,dans les deux cas il doit scanner le QR-code se trouvant sur le vélo et prendre une ou des photo du vélo selon l'état déclaré.
+Pour prendre un vélo, lutilisateur doit au préalable sauthentifier et éventuellement lavoir réservé, ensuite il doit prendre une photo du vélo et scanner le QR-Code qui permettra au système de déverrouiller le cadenas. 
+
+\underline{\textbf{Scenario}}
+\begin{figure}[!ht]
+    \center
+    \includegraphics[scale=0.5]{prendreVelo.png}
+    \caption {Diagramme de séquence correspondant au use case "prendre un vélo"}
+\end{figure}
+
+\newpage
+\begin{itemize}
+\renewcommand{\labelitemiii}{$\ast$}
+\item Prendre des photos
+\item vérifier le contenu des photos
+\item Capturer Qr-code
+\end{itemize}
+\item Déclarer fin emprunt
+
+Un usagé doit déclarer la fin de lemprunt dans son application tout en prenant selon l'état du vélo déclaré des photos.
+
+\textbf{  Test:} \newline
+essayer de declarer la fin de l'emprunt sans fermer le cadenas ,la reponce attendu est la non prise en compte de la declaration et demander a l'utilisateur de bien verifier qu'il a bien fermer le cadenas,ect. 
+
+\underline{\textbf{Scenario}}
+\begin{figure}[!ht]
+    \center
+    \includegraphics[scale=0.5]{FinEmprunt.png}
+    \caption {Diagramme de séquence correspondant au use case "prendre un vélo"}
+\end{figure}
+
+\begin{itemize}
+\renewcommand{\labelitemiii}{$\ast$}
+\item Prendre des photos
+
+
+Pour déclarer la fin de lemprunt \newline
+\textbf{  Test:} \newline
+un test évident est d'essayer de fournir une photo autre qu'une image d'un vélo ou encore une photo d'un autre vélo, le système doit pouvoir identifier les vélos appartenant au parc et ainsi vérifier qu'il est bien enchainé.  
+
+\end{itemize}
+
+\item Espace abonné
+
+L'espace abonné de l'application et celui du site internet sont similaires.
+\begin{itemize}
+\renewcommand{\labelitemiii}{$\ast$}
+\item Se désabonner
+
+\item Modifier informations personnelles
+
+\textbf{  Test:} \newline
+En essyant de modifier les informations personelles d'un utilisateur , il suffit de vérifier que ça a bien été pris en compte par le système en consultant toutes ses récentes informations.
+
+
+
+\item Gérer le solde
+
+
+\begin{itemize}
+\renewcommand{\labelitemiii}{$\ast$}
+\item Consulter le solde
+\item Créditer le solde
+
+\end{itemize}
+
+
+\item Consulter informations personnelles 
+
+
+\item Consulter lhistorique des réservations
+
+
+
+\end{itemize}
+
+\item Contacter administrateur
+
+
+Un abonnée a la possibilité de contacter ladministrateur s'il trouve des difficutées dans lutilisation.
+
+\item Prendre en charge les réparations
+
+
+\item Réinitialiser mot de passe \newline
+Un utilisateur pourras réinitialiser son mot de passe a sa guise,pour diverse raison le concernant. \newline
+\textbf{  Test:} \newline
+On va réinitialiser un mot de passe  et essayer de nous connecter au service avec l'ancien mot de passe, le systéme doit retourner une erreur étant donnée que le mot de passe sauvegardé est différent de celui qui a été entré.
+
+\end{itemize}
+
+
+
+\item\textbf{Administrateur}
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+\item Gérer utilisateur
+Ladministrateur pourra effectuer des opérations de gestion suivante :
+
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+\item Chercher un  utilisateur \newline
+l'administrateur pouras chercher un utilistauer suivant pluusiers critéres a definir,pour raisons cité ci dessous. 
+\item Bannir un  utilisateur \newline
+L'administrateur pourras banir un utilisateur, il ne pourras alors plus integrer la comunauté des utilisateur du systéme \newline
+\textbf{  Test:} \newline
+Un utilisateur banni qui essairais de créer un compte sur l'aplication se verrais recevoir un refus de creation de compte.
+\item Contacter un utilisateur
+\item Consulter la carte des vélos
+\end{itemize}
+
+\item Gérer les vélos
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+\item Ajouter un vélo \newline
+Un administrateur aura la possiblité d'ajouter un vélo au parc de vélo en inserant toutes les informations le concernant,il sera ainsi visible sur la carte des vélo disponible pour une possiblité d'emprunt.   
+\item Supprimer un vélo \newline
+l'adinistrateur pourras aussi suprimer un vélo de la base de donnée pour des raisons diverse,panne ou casse,il sera alors plus visible sur la carte. 
+\item Consulter des informations sur les vélos
+\end{itemize}
+
+Ladministrateur pourra consulter des informations sur les vélos ainsi que les statistiques des utilisations.
+
+\section{Simulation}
+Etant donné que notre système de prêt de vélos est un tout nouveau concept et pour des fins de validation, notre projet devra permettre de simuler différents scénarios en inculuant plusieurs vélos et plusieurs utilisateurs(avec différents profils), c'est donc cela l'aspect tâtonnement/recherche cité dans le sujet. Il faut préciser que cette composante logicielle (simulateur) sera extérieure au code source du système lui-même et de l'application liée et sera développé en parallèle avec notre système de prêt de vélos.  
+
+\section{Diagramme de Gantt}
+
+
+Vous pouvez trouver ci-dessous le diagramme prévisionnel de la mise en oeuvre
+\includepdf[pages=1-7]{notre_gantt.pdf}
+\end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{thebibliography}{9}
+
+   \bibitem{lamport94}
+          Pascal ANDRE,Alain VAILLY
+          Dévlopement de logiciels avec UML2 et OCL.
+          edition ellipses
+          
+    \bibitem{lamport94}
+          Pascal ANDRE,Alain VAILLY
+         Spécification des logiciels.
+         edition ellipses
+          
+
+\end{thebibliography}
+
+
+
+% \paragraph{Titre}           % Toutes petites sections (le nom \paragraph
+                              % n'est pas trÃšs bien choisi)
+
+% \subparagraph{Titre}        % La derniÃšre
+
+% \appendix                   % CommenÃ§ons les annexes
+
+% \section{Titre}             % Annexe A
+
+% \section{Titre}             % Annexe B
+
+% \listoffigures              % Table des figures
+
+% \listoftables               % Liste des tableaux
+
+\end{document}
