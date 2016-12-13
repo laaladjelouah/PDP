@@ -10,7 +10,9 @@ d'un systéme de prêt de vélo.
 En équipe de quatre étudiant, 
  
  #LAALA DJELOUAH     :
+ 
  #ROMAIN COMBERBET   : 
+
  #LASSOUANI SOFIANE  : https://fr.linkedin.com/in/sofiane-lassouani
  
  #STEWARD OUADI      : 
